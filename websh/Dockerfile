@@ -4,7 +4,7 @@ MAINTAINER Stefan Liu
 
 RUN mkdir /var/www
 
-ADD WebTerminal /var/www/
+COPY WebTerminal /var/www/
 
 RUN cd /var/www/WebTerminal/ && /usr/bin/npm install
 
