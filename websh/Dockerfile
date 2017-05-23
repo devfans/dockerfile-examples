@@ -1,4 +1,4 @@
-FROM node:4-onbuild
+FROM node:alpine
 
 MAINTAINER Stefan Liu
 
@@ -6,8 +6,10 @@ RUN mkdir /var/www
 
 COPY WebTerminal /var/www/
 
-RUN cd /var/www/WebTerminal/ && /usr/bin/npm install
+WORKDIR /var/www/WebTerminal
 
-EXPOSE 9999
+RUN npm install
 
-CMD ["/usr/bin/node", "/var/www/WebTerminal/bin/tty.js", "/var/www/WebTerminal/config.json"]
+EXPOSE 9999/tcp
+
+CMD ["node", "bin/tty.js", "config.json"]
